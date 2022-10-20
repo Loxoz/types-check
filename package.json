@@ -1,0 +1,27 @@
+{
+  "name": "@loxoz/types-check",
+  "version": "1.0.0",
+  "description": "A collection of handy functions to quickly check types in your code",
+  "types": "./lib/esm/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "exports": {
+    "import": "./lib/esm/index.js",
+    "require": "./lib/cjs/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc -p tsconfig.cjs.json"
+  },
+  "keywords": ["typescript", "type", "types", "check", "checker", "assert", "api", "valid", "validate", "validation"],
+  "author": "Loxoz",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
