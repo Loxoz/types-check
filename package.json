@@ -18,6 +18,14 @@
   "keywords": ["typescript", "type", "types", "check", "checker", "assert", "api", "valid", "validate", "validation"],
   "author": "Loxoz",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Loxoz/types-check.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Loxoz/types-check/issues"
+  },
+  "homepage": "https://github.com/Loxoz/types-check",
   "files": [
     "lib"
   ],
