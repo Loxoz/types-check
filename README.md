@@ -2,6 +2,8 @@
 
 A collection of handy functions to quickly check types in your code.
 
+[**npm**](https://www.npmjs.com/package/@loxoz/types-check)
+
 ✨ This library **fully supports TypeScript** and **will infer the checked type** to the variable.
 
 👉 The main goal of this library is to **reduce bundle size** when checking for types (like more than two or three times) in your **web app**, but i also like this way of writing code with type checks.
@@ -9,7 +11,7 @@ A collection of handy functions to quickly check types in your code.
 ## Examples
 
 ```js
-import {} from '@loxoz/types-check';
+import { isObj, isStr } from '@loxoz/types-check';
 
 let data = null;
 
