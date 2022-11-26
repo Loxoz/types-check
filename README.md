@@ -82,6 +82,20 @@ Checks if `o` is a `function`
 
 > The inferred type is `(...args: unknown[]) => unknown`
 
+### isDef
+
+```ts
+isDef(o: any): boolean
+```
+
+Checks if `o` is neither `null` or `undefined`
+
+This function is just here for coding preferences but can actually save some bundle size if you use it a lot in your code.
+
+Doing `o != null` is exactly the same (since it does that under the hood)
+
+Also see [isUndef](#isundef)
+
 ### isUndef
 
 ```ts
@@ -90,9 +104,25 @@ isUndef(o: any): boolean
 
 Checks if `o` is either `null` or `undefined`
 
-This function is just here for coding preferences but it can actually save some bundle size if you use it a lot in your code.
+This function is just here for coding preferences but can actually save some bundle size if you use it a lot in your code.
 
 Doing `o == null` is exactly the same (since it does that under the hood)
+
+Also see [isDef](#isdef)
+
+### isDefNull
+
+```ts
+isDefNull(o: any): boolean
+```
+
+Checks if `o` is not `undefined` (but can be `null`)
+
+This function is just here for coding preferences but can actually save some bundle size if you use it a lot in your code.
+
+Doing `o !== undefined` is exactly the same (since it does that under the hood)
+
+Also see [isDef](#isdef)
 
 ### other
 

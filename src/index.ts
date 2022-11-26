@@ -9,6 +9,8 @@ interface JSType {
   'undefined': undefined;
 }
 
+type NonUndefined<T> = T extends undefined ? never : T;
+
 // primitives
 
 /**
@@ -54,17 +56,51 @@ export function isFunc(o: any): o is (...args: unknown[]) => unknown {
 }
 
 /**
+ * Checks if `o` is neither `null` or `undefined`
+ * 
+ * This function is just here for coding preferences but
+ * can actually save some bundle size if you use it a
+ * lot in your code.
+ * 
+ * Doing `o != null` is exactly the same (since it does
+ * that under the hood)
+ * 
+ * Also see {@link isUndef}
+ */
+export function isDef(o: any): o is NonNullable<typeof o> {
+  return o != null;
+}
+
+/**
  * Checks if `o` is either `null` or `undefined`
  * 
  * This function is just here for coding preferences but
- * it can actually save some bundle size if you use it a
+ * can actually save some bundle size if you use it a
  * lot in your code.
  * 
  * Doing `o == null` is exactly the same (since it does
  * that under the hood)
+ * 
+ * Also see {@link isDef}
  */
 export function isUndef(o: any): o is null | undefined {
   return o == null;
+}
+
+/**
+ * Checks if `o` is not `undefined` (but can be `null`)
+ * 
+ * This function is just here for coding preferences but
+ * can actually save some bundle size if you use it a
+ * lot in your code.
+ * 
+ * Doing `o !== undefined` is exactly the same (since it
+ * does that under the hood)
+ * 
+ * Also see {@link isDef}
+ */
+ export function isDefNull(o: any): o is NonUndefined<typeof o> {
+  return o !== undefined;
 }
 
 export function isBigInt(o: any): o is bigint {
