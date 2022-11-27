@@ -13,7 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
-    "build:cjs": "tsc -p tsconfig.cjs.json"
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "publish": "npm publish --access public"
   },
   "keywords": ["typescript", "type", "types", "check", "checker", "assert", "api", "valid", "validate", "validation"],
   "author": "Loxoz",
