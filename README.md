@@ -8,6 +8,8 @@ A collection of handy functions to quickly check types in your code.
 
 👉 The main goal of this library is to **reduce bundle size** when checking for types (like more than two or three times) in your **web app**, but i also like this way of writing code with type checks.
 
+It will also work using commonjs's `require` like this: `const { isStr } = require('@loxoz/types-check);`
+
 ## Examples
 
 ```js
@@ -88,7 +90,7 @@ Checks if `o` is a `function`
 isDef(o: any): boolean
 ```
 
-Checks if `o` is neither `null` or `undefined`
+Checks if `o` is neither `null` nor `undefined`
 
 This function is just here for coding preferences but can actually save some bundle size if you use it a lot in your code.
 

@@ -56,7 +56,7 @@ export function isFunc(o: any): o is (...args: unknown[]) => unknown {
 }
 
 /**
- * Checks if `o` is neither `null` or `undefined`
+ * Checks if `o` is neither `null` nor `undefined`
  * 
  * This function is just here for coding preferences but
  * can actually save some bundle size if you use it a
