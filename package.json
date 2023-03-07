@@ -1,6 +1,6 @@
 {
   "name": "@loxoz/types-check",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collection of handy functions to quickly check types in your code",
   "types": "./lib/esm/index.d.ts",
   "main": "./lib/cjs/index.js",
@@ -14,7 +14,7 @@
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "publish": "npm publish --access public"
+    "publish": "npm run build && npm publish --access public"
   },
   "keywords": ["typescript", "type", "types", "check", "checker", "assert", "api", "valid", "validate", "validation"],
   "author": "Loxoz",
