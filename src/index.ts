@@ -144,5 +144,5 @@ export function isNonEmptyStr(o: any): o is string {
 
 /** Checks if `o` is an `Array` (`any[]`) with a least one element */
 export function isNonEmptyArr(o: any): o is any[] {
-  return isArr(o);
+  return isArr(o) && o.length > 0;
 }
