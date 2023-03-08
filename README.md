@@ -138,7 +138,7 @@ There is also `isBigInt`, `isBool` and `isSymbol`, but they aren't used often so
 isArr(o: any): boolean
 ```
 
-Checks if `o` is an `Array` (`unkown[]`, can be changed using the `T` type parameter for `T[]`)
+Checks if `o` is an `Array` (`any[]`, for convenience)
 
 ### isObjStrict
 
@@ -170,7 +170,7 @@ Checks if `o` is a `string` with a least one character
 isNonEmptyArr(o: any): boolean
 ```
 
-Checks if `o` is an `Array` (`unkown[]`, can be changed using the `T` type parameter for `T[]`) with a least one element
+Checks if `o` is an `Array` (`any[]`, for convenience) with a least one element
 
 ### isArrTyped
 

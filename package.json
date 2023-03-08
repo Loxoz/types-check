@@ -1,6 +1,6 @@
 {
   "name": "@loxoz/types-check",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A collection of handy functions to quickly check types in your code",
   "types": "./lib/esm/index.d.ts",
   "main": "./lib/cjs/index.js",
