@@ -1,4 +1,4 @@
-interface JSType {
+export interface JSType {
   'string': string;
   'number': number;
   'bigint': bigint;
@@ -9,7 +9,7 @@ interface JSType {
   'undefined': undefined;
 }
 
-type NonUndefined<T> = T extends undefined ? never : T;
+export type NonUndefined<T> = T extends undefined ? never : T;
 
 // primitives
 
@@ -117,8 +117,8 @@ export function isSymbol(o: any): o is symbol {
 
 // objects
 
-/** Checks if `o` is an `Array` (`any[]`) */
-export function isArr(o: any): o is unknown[] {
+/** Checks if `o` is an `Array` (`any[]`, can be changed using the `T` type parameter for `T[]`) */
+export function isArr<T = unknown>(o: any): o is T[] {
   return Array.isArray(o);
 }
 
@@ -142,7 +142,12 @@ export function isNonEmptyStr(o: any): o is string {
   return isStr(o) && o.length > 0;
 }
 
-/** Checks if `o` is an `Array` (`any[]`) with a least one element */
-export function isNonEmptyArr(o: any): o is any[] {
+/** Checks if `o` is an `Array` (`any[]`, can be changed using the `T` type parameter for `T[]`) with a least one element */
+export function isNonEmptyArr<T = unknown>(o: any): o is T[] {
   return isArr(o) && o.length > 0;
+}
+
+/** Checks if `o` is an `Array` and all of its members satisfy the specified predicate to infer the type of that predicate */
+export function isArrTyped<T>(o: unknown, predicate: (value: unknown, index: number, array: unknown[]) => value is T): o is T[] {
+  return isArr<T>(o) && o.every(predicate);
 }

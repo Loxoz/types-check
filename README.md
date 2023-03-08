@@ -138,7 +138,7 @@ There is also `isBigInt`, `isBool` and `isSymbol`, but they aren't used often so
 isArr(o: any): boolean
 ```
 
-Checks if `o` is an `Array` (`any[]`)
+Checks if `o` is an `Array` (`unkown[]`, can be changed using the `T` type parameter for `T[]`)
 
 ### isObjStrict
 
@@ -170,10 +170,17 @@ Checks if `o` is a `string` with a least one character
 isNonEmptyArr(o: any): boolean
 ```
 
-Checks if `o` is an `Array` (`any[]`) with a least one element
+Checks if `o` is an `Array` (`unkown[]`, can be changed using the `T` type parameter for `T[]`) with a least one element
+
+### isArrTyped
+
+```ts
+isArrTyped(o: any, predicate: (value: unknown, index: number, array: unknown[]) => boolean): boolean
+```
+
+Checks if `o` is an `Array` and all of its members satisfy the specified predicate to infer the type of that predicate  
+For e.g. `isArrTyped(arr, isStr)` will infer the type `string[]`
 
 ## Advices
-
-- There is no real need for a `isBool` (or `isBoolean`) since you can just do `o === true` or `o === false`.
 
 If you need more complex type checking for example on objects or arrays, i recommend you take a look at [superstruct](https://www.npmjs.com/package/superstruct).
