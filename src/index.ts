@@ -1,15 +1,17 @@
+// types
 export interface JSType {
-  'string': string;
-  'number': number;
-  'bigint': bigint;
-  'boolean': boolean;
-  'symbol': symbol;
-  'object': object;
-  'function': Function;
-  'undefined': undefined;
+  "string": string;
+  "number": number;
+  "bigint": bigint;
+  "boolean": boolean;
+  "symbol": symbol;
+  "object": object;
+  "function": Function;
+  "undefined": undefined;
 }
 
 export type NonUndefined<T> = T extends undefined ? never : T;
+
 
 // primitives
 
@@ -27,12 +29,12 @@ export function isType<T extends keyof JSType>(o: unknown, t: T): o is JSType[T]
 
 /** Checks if `o` is a `string` */
 export function isStr(o: unknown): o is string {
-  return isType(o, 'string');
+  return isType(o, "string");
 }
 
 /** Checks if `o` is a `number` */
 export function isNum(o: unknown): o is number {
-  return isType(o, 'number');
+  return isType(o, "number");
 }
 
 /**
@@ -46,13 +48,13 @@ export function isNum(o: unknown): o is number {
  * *Note*: this function won't include functions and null
  * (`typeof null === "object"` is truthy)
  */
-export function isObj(o: unknown): o is Record<string | symbol, any> {
-  return o !== null && isType(o, 'object') && !isArr(o);
+export function isObj(o: unknown): o is Record<keyof any, any> {
+  return o !== null && isType(o, "object") && !isArr(o);
 }
 
 /** Checks if `o` is a `function` */
-export function isFunc(o: unknown): o is (...args: unknown[]) => unknown {
-  return isType(o, 'function');
+export function isFunc(o: unknown): o is Function {
+  return isType(o, "function");
 }
 
 /**
@@ -104,15 +106,15 @@ export function isUndef(o: unknown): o is null | undefined {
 }
 
 export function isBigInt(o: unknown): o is bigint {
-  return isType(o, 'bigint');
+  return isType(o, "bigint");
 }
 
 export function isBool(o: unknown): o is boolean {
-  return isType(o, 'boolean');
+  return isType(o, "boolean");
 }
 
 export function isSymbol(o: unknown): o is symbol {
-  return isType(o, 'symbol')
+  return isType(o, "symbol")
 }
 
 // objects
@@ -124,15 +126,15 @@ export function isArr(o: unknown): o is any[] {
 
 /**
  * Will ensure that `o` is an `object` created using `{}`,
- * `Object()` or `Object.create()`
+ * `Object()` or `Object.create({})`
  * 
  * *Warning*: this method is much slower than {@link isObj}
  * 
  * This function won't include class instances, if you
  * want that, look at {@link isObj}
  */
-export function isObjStrict(o: unknown): o is { [x: string | symbol]: any } {
-  return o !== null && isType(o, 'object') && Object.getPrototypeOf(o) === Object.prototype;
+export function isObjStrict(o: unknown): o is Record<keyof any, any> {
+  return o !== null && isType(o, "object") && Object.getPrototypeOf(o) === Object.prototype;
 }
 
 // helpers
@@ -143,11 +145,18 @@ export function isNonEmptyStr(o: unknown): o is string {
 }
 
 /** Checks if `o` is an `Array` (`any[]`, for convenience) with a least one element */
-export function isNonEmptyArr(o: any): o is any[] {
+export function isNonEmptyArr(o: unknown): o is any[] {
   return isArr(o) && o.length > 0;
 }
 
 /** Checks if `o` is an `Array` and all of its members satisfy the specified predicate to infer the type of that predicate */
 export function isArrTyped<T>(o: unknown, predicate: (value: unknown, index: number, array: unknown[]) => value is T): o is T[] {
   return isArr(o) && o.every(predicate);
+}
+
+// assertion
+export class AssertionError extends TypeError {}
+
+export function assert<T>(o: unknown, predicate: (value: unknown) => value is T, message?: string): asserts o is T {
+  if (!predicate(o)) throw new AssertionError(message);
 }

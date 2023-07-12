@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2022 [Loxoz](https://github.com/Loxoz)
+Copyright (c) 2022-2023 [Loxoz](https://github.com/Loxoz)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
